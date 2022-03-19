@@ -1,0 +1,17 @@
+.backBtn{
+    border: none;
+    color: black;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-weight: 600;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+}
+
+h1{
+    text-align: center;
+}

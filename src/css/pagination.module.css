@@ -1,0 +1,24 @@
+.listItem{
+    list-style: none;
+    display: block;
+    padding: 10px 15px;
+    border: 2px solid black;
+    margin: 4px;
+}
+.listItem:hover{
+    opacity: 0.9;
+    background-color: rgb(242, 245, 248);
+}
+.listLink{
+    text-decoration: none;
+}
+
+.list{
+    list-style: none;
+    display: flex;
+}
+
+.listWrap{
+    display: flex;
+    justify-content: center;
+}
