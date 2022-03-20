@@ -11,18 +11,16 @@ import {
 import { fillingFlag } from './utils/fillingFlag';
 
 
-
 function App() {
   localStorage.clear()
   const [data, setData] = useState<any[]>([]);
   const [flag,setFlag] = useState<boolean[]>([]);
   const [currentPage, setCurrentPage] = useState(1)
-  const [perPage] = useState(30)
+  const [perPage] = useState(5)
   console.log(flag)
 
   useEffect(() =>{
      getRes()
-
   }, []);
 
  async function getRes(){
@@ -39,6 +37,7 @@ function App() {
     setCurrentPage(pageNumber)
 
   }
+
   return (
     <div className="App">
     <Router>
