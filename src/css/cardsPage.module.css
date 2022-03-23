@@ -1,0 +1,15 @@
+
+.favBtn{
+    border: none;
+    color: black;
+    padding: 12px 24px;
+    margin: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    font-weight: 400;
+}
+.favBtn:hover{
+    opacity: 0.9;
+}

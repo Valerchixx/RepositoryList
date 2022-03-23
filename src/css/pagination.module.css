@@ -9,6 +9,9 @@
     opacity: 0.9;
     background-color: rgb(242, 245, 248);
 }
+.active{
+    background-color: rgb(255, 255, 255);
+}
 .listLink{
     text-decoration: none;
 }

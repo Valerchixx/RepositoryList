@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Favorites from './Components/Favorites';
-import Card from './Components/Cards';
-import Pagination from './Components/Pagination';
+import Favorites from './Page/FavoritesPage';
+import CardPage from './Page/CardsPage';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
 import { fillingFlag } from './utils/fillingFlag';
-
+import { CardType} from './utils/type';
 
 function App() {
   localStorage.clear()
-  const [data, setData] = useState<any[]>([]);
+  const [repos, setRepos] = useState<CardType[]>([]);
   const [flag,setFlag] = useState<boolean[]>([]);
-  const [currentPage, setCurrentPage] = useState(1)
-  const [perPage] = useState(5)
   console.log(flag)
 
   useEffect(() =>{
@@ -27,26 +24,17 @@ function App() {
      let res = await fetch('https://api.github.com/search/repositories?q=created:%3E2022-03-13&sort=stars&order=desc')
      let data = await res.json();
      setFlag(fillingFlag(data.items))
-     setData(data.items)
-  }
-  const lastIndex = currentPage * perPage;
-  const firstIndex = lastIndex - perPage;
-  const curPage = data.slice(firstIndex, lastIndex);
-
-  function paginate(pageNumber: number){
-    setCurrentPage(pageNumber)
-
+     setRepos(data.items)
   }
 
   return (
     <div className="App">
     <Router>
     <Routes>
-      <Route path='/' element={ <Card cardsArr={curPage} boolArray={flag} />} />
-      <Route path='/favorites'  element={<Favorites totalCards={data.length} />}/>
+      <Route index element={ <CardPage repoArr={repos} boolArray={flag} />} />
+      <Route path='/favorites'  element={<Favorites/>}/>
     </Routes>
     </Router>
-    <Pagination totalCards={data.length} perPage={perPage} paginate={paginate} />
     </div>
   );
 }
