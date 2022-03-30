@@ -37,6 +37,7 @@
     padding: 5px;
     border: 1px dashed grey;
     border-radius: 5px;
+    z-index: 100;
     margin-left: 10px;
 }
 
@@ -52,7 +53,16 @@
 
 .link a{
     text-decoration: none;
+    flex-wrap: wrap;
+    display: inline;
 
+}
+.link{
+    max-width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    display: block;
+    white-space: pre-wrap
 }
 .link a:hover{
     opacity: 0.8;

@@ -1,19 +1,18 @@
 
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import markCheck from '../images/markChecked.svg';
 import Card from '../Components/Card';
 import styles from '../css/cardsPage.module.css';
 import {Link} from 'react-router-dom';
 import Pagination from '../Components/Pagination';
 import {getRepositories} from '../utils/hooks/fetch';
-import {CardType} from '../utils/type';
-
+import {calcIndex} from '../utils/hooks/calculateIndex';
+import {getFavoriteItem} from '../utils/hooks/localStorage';
 const Cards = () => {
 	const [pagination, setPagination] = useState({
 		current: 1,
 		perPage: 5,
 	});
-	const [repoIds, setPeroIds] = useState<number[]>([]);
 	const {repos} = getRepositories();
 
 	const handlePagination = (data:{
@@ -28,37 +27,20 @@ const Cards = () => {
 		});
 	};
 
-	const lastIndex = pagination.current * pagination.perPage;
-	const firstIndex = lastIndex - pagination.perPage;
+	const lastIndex = useMemo(() => calcIndex(pagination.current, pagination.perPage), [pagination.current, pagination.perPage]);
+	const firstIndex = useMemo(() => calcIndex(pagination.current, pagination.perPage) - pagination.perPage, [pagination.current, pagination.perPage]);
 	const curPage = repos.slice(firstIndex, lastIndex);
+	const [repoIds] = useState<number[]>(getFavoriteItem('repoIds'));
 
-	function handleAddFavorite(id: number, card: CardType) {
-		const data = {
-			id: card.id,
-			name: card.name,
-			language: card.language,
-			description: card.description,
-			clone_url: card.clone_url,
-			watchers: card.watchers,
-			stargazers_count: card.stargazers_count,
-		};
-		// Const {name, language, description, clone_url, watchers, stargazers_count} = card;
-		if (sessionStorage.getItem(`item${id}`)) {
-			sessionStorage.removeItem(`item${id}`);
+	function handleAddFavorite(id: number) {
+		const exsistId = repoIds.indexOf(id);
+		if (exsistId !== -1) {
+			repoIds.splice(exsistId, 1);
+			sessionStorage.setItem('repoIds', JSON.stringify(repoIds));
 		} else {
-			sessionStorage.setItem(`item${id}`, JSON.stringify(data));
+			repoIds.push(id);
+			sessionStorage.setItem('repoIds', JSON.stringify(repoIds));
 		}
-
-		const existId = repoIds.indexOf(id);
-		if (existId !== -1) {
-			const newArr = [...repoIds];
-			newArr.splice(existId, 1);
-			setPeroIds(newArr);
-		} else {
-			setPeroIds([...repoIds, id]);
-		}
-
-		console.log(repoIds);
 	}
 
 	return (
@@ -74,7 +56,7 @@ const Cards = () => {
 					watchers={item.watchers}
 					stargazers_count={item.stargazers_count}
 					index={index}
-					handle={() => handleAddFavorite(item.id, item)}
+					handle={() => handleAddFavorite(item.id)}
 					id={item.id}
 				/>
 			))}

@@ -16,6 +16,5 @@ export function getRepositories() {
 
 		getRes();
 	}, []);
-	console.log(repos);
 	return {repos};
 }

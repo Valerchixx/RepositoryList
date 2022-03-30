@@ -33,7 +33,7 @@ const Card
 
    	function handleFlag() {
    		handle();
-   		setFalg((arr: boolean[]) => arr.map((bool: boolean, i: number) => (Boolean(index === i && localStorage.getItem(`item${id}`)))));
+   		setFalg((arr: boolean[]) => arr.map((bool: boolean, i: number) => (Boolean(index === i))));
    	}
 
    	return (
@@ -44,7 +44,7 @@ const Card
    					<div className={styles.lang}> <h4>{language}</h4></div>
    				</div>
    				<div onClick={handleFlag} className={styles.mark}>
-   					<img src={ sessionStorage.getItem(`item${id}`) ? markCheck : mark} alt="" />
+   					<img src={ sessionStorage.getItem('repoIds')?.includes(String(id)) ? markCheck : mark} alt="" />
    				</div>
    			</div>
    			<div className={styles.descrWrap}>

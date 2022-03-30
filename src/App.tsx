@@ -9,8 +9,6 @@ import {
 } from 'react-router-dom';
 
 function App() {
-	// LocalStorage.clear()
-
 	return (
 		<div className="App">
 			<Router>
