@@ -14,6 +14,11 @@
     padding: 0;
     margin: 0;
 }
+.descrWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .descrWrap p{
     margin: 0;
 }
@@ -26,47 +31,25 @@
     margin-left: 15px;
     margin-right: 10px;
 }
-
-.starInfo, .watchersInfo{
+.item{
     display: flex;
     align-items: center;
+    margin-right: 15px;
 }
-.info{
+.itemWrap{
     display: flex;
-    align-items: center;
-    padding: 5px;
-    border: 1px dashed grey;
-    border-radius: 5px;
-    z-index: 100;
-    margin-left: 10px;
+    align-items: center ;
 }
-
+.imgStar{
+    margin-right: 7px;
+}
 .footerWrap{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
-}
-.starImg{
-    margin-right: 5px;
-}
-
-.link a{
-    text-decoration: none;
-    flex-wrap: wrap;
-    display: inline;
-
-}
-.link{
-    max-width: 200px;
-    display: flex;
-    flex-wrap: wrap;
-    display: block;
-    white-space: pre-wrap
-}
-.link a:hover{
-    opacity: 0.8;
+    margin-top: 10px;
+    padding-bottom: 25px;
 }
 .wrong{
     background-color: brown;
 }
+
+
+

@@ -18,7 +18,13 @@ const Favorites = () => {
 	const firstIndex = useMemo(() => calcIndex(pagination.current, pagination.perPage) - pagination.perPage, [pagination.current, pagination.perPage]);
 	const {repos} = getRepositories();
 	const idsArr = sessionStorage.getItem('repoIds');
-	const parseArr = JSON.parse(idsArr || '');
+	let parseArr;
+	if (idsArr !== null) {
+		parseArr = JSON.parse(idsArr || '');
+	} else {
+		parseArr = [];
+	}
+
 	for (let i = 0; i < repos.length; i++) {
 		const repoItem = repos.length > 1 ? repos[i].id : '';
 		const repo = repos.length > 0 ? repos[i] : '';
@@ -44,7 +50,6 @@ const Favorites = () => {
 	};
 
 	const curPage = cardArray.slice(firstIndex, lastIndex);
-	console.log(lastIndex);
 
 	function deleteCard(id: number) {
 		const exId = favRepos.indexOf(id);
@@ -53,7 +58,6 @@ const Favorites = () => {
 		}
 
 		sessionStorage.setItem('repoIds', JSON.stringify(favRepos));
-		console.log('rem', favRepos);
 		window.location.reload();
 	}
 
@@ -76,7 +80,7 @@ const Favorites = () => {
 						handle={() => deleteCard(item.id)}
 					/>
 				))}
-				{curPage.length === 0 && <div className={styles.massage}>There are currently no surviving repositories</div> }
+				{!curPage.length && <div className={styles.massage}>There are currently no surviving repositories</div> }
 				<div></div>
 			</div>
 			<Pagination totalCards={cardArray.length} paginate={handlePagination} perPage={pagination.perPage} currentPage={pagination.current}/>

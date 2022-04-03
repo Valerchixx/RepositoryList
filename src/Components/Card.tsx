@@ -48,21 +48,21 @@ const Card
    				</div>
    			</div>
    			<div className={styles.descrWrap}>
-   				<p className={styles.description}>{description}</p>
-   			</div>
-   			<div className={styles.footerWrap}>
-   				<div className={styles.link}>
-   					<a href={clone_url}>{clone_url}</a>
+   				<div><p className={styles.description}>{description ? description : 'no more description'}</p></div>
+   				<div className={styles.itemWrap}>
+				   <div className={styles.item}>
+					   <img className={styles.imgStar} src={star} alt="" />
+					   <p>{stargazers_count}</p>
+				   </div>
+   				  <div className={styles.item}>
+					   <img src={watchersImg} alt="" />
+					   <p>{watchers}</p>
+				  </div>
    				</div>
-   				<div className={styles.info}>
-   					<div className={styles.starInfo}>
-   						<div className={styles.starImg}> <img src={star} alt="" /> </div>
-   						<div> {stargazers_count} </div>
-   					</div>
-   					<div className={styles.watchersInfo}>
-   						<div className={styles.watchersImg}><img src={watchersImg} alt="" /></div>
-   						<div>{watchers}</div>
-   					</div>
+   			</div>
+			   <div className={styles.footerWrap}>
+   				<div className={styles.link}>
+   					<a className={styles.l} href={clone_url}>{clone_url}</a>
    				</div>
    			</div>
    		</div>

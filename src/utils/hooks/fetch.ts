@@ -8,7 +8,7 @@ export function getRepositories() {
 
 	useEffect(() => {
 		async function getRes() {
-			const res = await fetch('https://api.github.com/search/repositories?q=created:%3E2022-03-13&sort=stars&order=desc');
+			const res = await fetch('https://api.github.com/search/repositories?q=created:%3E2022-03-22&sort=stars&order=desc');
 			const data = await res.json();
 			setFlag(fillingFlag(data.items));
 			setRepos(data.items);
