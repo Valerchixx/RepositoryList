@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/RepositoryList/static/css/main.e8a1269d.css",
-    "main.js": "/RepositoryList/static/js/main.20afc100.js",
+    "main.js": "/RepositoryList/static/js/main.7fcbaff4.js",
     "static/js/787.d24b039e.chunk.js": "/RepositoryList/static/js/787.d24b039e.chunk.js",
     "static/media/watchers.svg": "/RepositoryList/static/media/watchers.7a1155ec6c750eb2404e812fe0dea3ae.svg",
     "static/media/star.svg": "/RepositoryList/static/media/star.71ce441ae38e9762e972173eda9d1c63.svg",
@@ -9,11 +9,11 @@
     "static/media/markBook.svg": "/RepositoryList/static/media/markBook.07ac0011a167bbc3e73476c8d53f5b90.svg",
     "static/media/markChecked.svg": "/RepositoryList/static/media/markChecked.c67cbfbd6f1890c3f16ca25ac8dd3be2.svg",
     "main.e8a1269d.css.map": "/RepositoryList/static/css/main.e8a1269d.css.map",
-    "main.20afc100.js.map": "/RepositoryList/static/js/main.20afc100.js.map",
+    "main.7fcbaff4.js.map": "/RepositoryList/static/js/main.7fcbaff4.js.map",
     "787.d24b039e.chunk.js.map": "/RepositoryList/static/js/787.d24b039e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e8a1269d.css",
-    "static/js/main.20afc100.js"
+    "static/js/main.7fcbaff4.js"
   ]
 }
